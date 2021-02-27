@@ -1,0 +1,32 @@
+@import "../../utilitiesStyles/variables";
+
+.input {
+    display: block;
+    background-color: $color-black-3;
+    border: 1px solid $color-gray-0;
+    color: $color-white-0;
+    padding: 14px 16px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+
+    &.input--fullWidth {
+        width: 100%;
+    }
+
+    &.input--error {
+        border-color: $color-secondary-1;
+    }
+
+    &.input--textarea {
+        resize: none;
+    }
+}
+
+.input--errorMessage {
+    color: $color-secondary-1;
+    font-size: 0.84rem;
+    font-weight: 500;
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 10px;
+}

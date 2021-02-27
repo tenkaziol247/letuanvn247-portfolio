@@ -1,0 +1,28 @@
+@import "../../../utilitiesStyles/variables";
+
+.nameColumn {
+    display: inline-block;
+    padding: 2px 8px;
+    background-color: $color-secondary-0;
+    position: relative;
+    margin-left: 4px;
+    margin-bottom: 30px;
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(100%, -50%);
+        width: 0;
+        height: 0;
+        border-top: 19px solid transparent;
+        border-bottom: 19px solid transparent;
+        border-right: 25px solid transparent;
+        border-left: 25px solid $color-secondary-0;
+    }
+}

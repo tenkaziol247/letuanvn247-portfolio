@@ -1,0 +1,45 @@
+@import "../../../utilitiesStyles/variables";
+
+.contactForm {
+    h2 {
+        font-weight: 500;
+        margin-bottom: 24px;
+        margin-left: 8px;
+        position: relative;
+        &::after {
+            content: "";
+            position: absolute;
+            display: block;
+            top: 100%;
+            left: 0;
+            height: 2px;
+            width: 60px;
+            background-color: $color-secondary-0;
+        }
+    }
+    form {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        .contactForm__item {
+            flex: 50%;
+            margin-bottom: 24px;
+            padding: 0 8px;
+            position: relative;
+        }
+        .contactForm__item--area {
+            width: 100%;
+            margin-bottom: 24px;
+            padding: 0 8px;
+            position: relative;
+        }
+        .contactForm__item--button {
+            width: 100%;
+            padding: 0 8px;
+            text-align: center;
+            margin-top: 8px;
+        }
+    }
+}

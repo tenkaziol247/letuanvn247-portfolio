@@ -1,0 +1,77 @@
+@import "../../../../utilitiesStyles/variables";
+
+.navigationItem {
+    background-color: $color-opacity-white-2;
+    display: block;
+    margin: 12px 0;
+    width: 78px;
+    height: 48px;
+    position: relative;
+    transition: all 0.3s;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 30px;
+        height: 22px;
+        background-color: $color-black-1;
+        z-index: 100;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 30px;
+        height: 22px;
+        background-color: $color-black-1;
+        z-index: 100;
+    }
+
+    .navigationItem__circuit {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translateX(100%);
+        width: 78px;
+        height: 48px;
+        background-color: $color-primary-0;
+        transition: all 0.4s ease-out;
+    }
+
+    .navigationItem__link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 4px;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        background-color: $color-black-0;
+        color: $color-gray-0;
+        transition: all 0.4s ease-out;
+        z-index: 200;
+    }
+
+    &:hover {
+        .navigationItem__link {
+            color: $color-gray-1;
+        }
+        .navigationItem__circuit {
+            transform: translateX(calc(100% - 10px));
+        }
+    }
+
+    &.navigationItem--active {
+        .navigationItem__link {
+            color: $color-primary-0;
+        }
+        .navigationItem__circuit {
+            transform: translateX(0);
+        }
+    }
+}

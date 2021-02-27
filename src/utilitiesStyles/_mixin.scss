@@ -1,0 +1,117 @@
+@import "./variables.scss";
+
+@mixin general-background {
+    width: 100%;
+    padding: 60px 100px;
+    position: relative;
+}
+
+//general width
+@mixin general-frame-width {
+    max-width: $w;
+    margin: 0 auto;
+    padding: 60px 0;
+}
+
+//responsive
+@mixin xs {
+    @media (max-width: #{$bp-sm - 1}) {
+        @content;
+    }
+}
+
+@mixin sm {
+    @media (max-width: #{$bp-md - 1}) {
+        @content;
+    }
+}
+
+@mixin md {
+    @media (max-width: #{$bp-lg - 1}) {
+        @content;
+    }
+}
+
+@mixin lg {
+    @media (max-width: #{$bp-xl - 1}) {
+        @content;
+    }
+}
+
+@mixin xl {
+    @media (min-width: #{$bp-xl}) {
+        @content;
+    }
+}
+
+@mixin custom-responsive($screen) {
+    @media (max-width: ($screen - 1) + "px") {
+        @content;
+    }
+}
+
+//animation
+@mixin fade-slide-right($duration, $delay) {
+    transform: translateX(-100%);
+    opacity: 0;
+    animation: fade-slide-right $duration ease-out $delay 1 forwards;
+}
+
+@mixin fade-slide-left($duration, $delay) {
+    transform: translateX(100%);
+    opacity: 0;
+    animation: fade-slide-left $duration ease-out $delay 1 forwards;
+}
+
+@mixin fade($duration, $delay) {
+    opacity: 0;
+    animation: fade $duration ease-out $delay 1 forwards;
+}
+
+@mixin grow($duration, $delay) {
+    width: 24px;
+    animation: grow $duration ease-in-out $delay 1 forwards;
+}
+
+@keyframes fade-slide-right {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes fade-slide-left {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes grow {
+    0% {
+        width: 24px;
+    }
+    80% {
+        width: 400px;
+    }
+    100% {
+        width: 360px;
+    }
+}

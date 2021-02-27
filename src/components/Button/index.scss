@@ -1,0 +1,127 @@
+@import "../../utilitiesStyles/variables";
+
+.button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    background-color: transparent;
+    border: 1px solid transparent;
+    transition: all 0.2s ease-out;
+
+    &.button--small {
+        padding: 4px 8px;
+        font-size: 0.9rem;
+        & > span {
+            margin-left: 4px;
+        }
+    }
+
+    &.button--normal {
+        padding: 8px 16px;
+        & > span {
+            margin-left: 8px;
+        }
+    }
+
+    &.button--large {
+        padding: 12px 24px;
+        font-size: 1.1rem;
+        & > span {
+            margin-left: 12px;
+        }
+    }
+
+    &.button--default {
+        color: $color-white-0;
+        &:hover {
+            background-color: $color-opacity-white-2;
+        }
+    }
+    &.button--primary {
+        color: $color-primary-1;
+        &:hover {
+            background-color: $color-opacity-primary-0;
+        }
+    }
+    &.button--secondary {
+        color: $color-secondary-1;
+        &:hover {
+            background-color: $color-opacity-secondary-1;
+        }
+    }
+
+    &.button--outlined {
+        &.button--default {
+            border-color: $color-white-2;
+            &:hover {
+                border-color: $color-white-1;
+            }
+        }
+        &.button--primary {
+            border-color: $color-primary-0;
+            &:hover {
+                border-color: $color-primary-1;
+            }
+        }
+        &.button--secondary {
+            border-color: $color-secondary-0;
+            &:hover {
+                border-color: $color-secondary-1;
+            }
+        }
+    }
+
+    &.button--contained {
+        color: $color-white-0;
+        &.button--default {
+            border-color: $color-white-2;
+            background-color: $color-white-2;
+            &:hover {
+                border-color: $color-white-1;
+                background-color: $color-white-1;
+            }
+        }
+        &.button--primary {
+            border-color: $color-primary-1;
+            background-color: $color-primary-1;
+            &:hover {
+                border-color: $color-primary-0;
+                background-color: $color-primary-0;
+            }
+        }
+        &.button--secondary {
+            border-color: $color-secondary-0;
+            background-color: $color-secondary-0;
+            &:hover {
+                border-color: $color-secondary-1;
+                background-color: $color-secondary-1;
+            }
+        }
+    }
+
+    &.button--fullWidth {
+        width: 100%;
+    }
+
+    &.button--disabled {
+        cursor: default;
+        pointer-events: none;
+        color: $color-gray-2;
+        &.button--outlined {
+            border-color: $color-gray-0;
+        }
+        &.button--contained {
+            border-color: $color-gray-0;
+            background-color: $color-gray-0;
+        }
+    }
+
+    &:focus {
+        outline: none;
+    }
+}

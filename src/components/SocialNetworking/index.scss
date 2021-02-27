@@ -1,0 +1,39 @@
+@import "../../utilitiesStyles/variables";
+@import "../../utilitiesStyles/mixin";
+
+.socialNetworking {
+    margin-bottom: 20px;
+    list-style: none;
+
+    .socialNetworking__item {
+        display: inline-block;
+
+        a {
+            display: inline-block;
+            margin-right: 16px;
+            text-align: center;
+            height: 40px;
+            width: 40px;
+            line-height: 40px;
+            background-color: $color-black-3;
+            border-radius: 50%;
+            transition: all 0.3s ease-out;
+            color: $color-white-0;
+            &:hover {
+                background-color: $color-secondary-0;
+            }
+        }
+    }
+}
+
+@include xs {
+    .socialNetworking {
+        .socialNetworking__item {
+            a {
+                height: 32px;
+                width: 32px;
+                line-height: 32px;
+            }
+        }
+    }
+}

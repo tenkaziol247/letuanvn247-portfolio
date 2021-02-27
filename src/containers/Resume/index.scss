@@ -1,0 +1,36 @@
+@import "../../utilitiesStyles/variables";
+@import "../../utilitiesStyles/mixin";
+
+#resume {
+    @include general-background;
+    background-color: $color-black-1;
+
+    .resume__container {
+        max-width: $w;
+        margin: 0 auto;
+
+        .resume__content {
+            display: flex;
+
+            .resume__left {
+                flex: 1;
+                position: relative;
+                margin-right: 10px;
+            }
+            .resume__right {
+                flex: 1;
+                position: relative;
+                margin-left: 10px;
+            }
+
+            .resume__post {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 4px;
+                height: 100%;
+                background-color: $color-opacity-white-0;
+            }
+        }
+    }
+}

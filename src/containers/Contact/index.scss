@@ -1,0 +1,23 @@
+@import "../../utilitiesStyles/variables";
+@import "../../utilitiesStyles/mixin";
+
+#contact {
+    @include general-background;
+    background-color: $color-black-1;
+    .contact__container {
+        max-width: $w;
+        margin: 0 auto;
+    }
+    .contact__content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        .contact__left {
+            flex: 5;
+        }
+        .contact__right {
+            flex: 7;
+        }
+    }
+}

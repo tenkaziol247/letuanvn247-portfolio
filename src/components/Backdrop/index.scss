@@ -1,0 +1,12 @@
+@import "../../utilitiesStyles/variables";
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99999;
+    background-color: $color-opacity-black-3;
+    transition: all 0.3s ease-out;
+}

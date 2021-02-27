@@ -1,0 +1,11 @@
+@import "../../../utilitiesStyles/mixin";
+
+.home__hero {
+    background-image: url("../../../assets/images/bg-avatar-nocolor-1.png");
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 100vh;
+    @include fade-slide-right(1.6s, 0.4s);
+}

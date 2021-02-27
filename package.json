@@ -1,15 +1,25 @@
 {
-  "name": "latuan247-resume",
+  "name": "letuanvn247-portfolio",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.2",
+    "aos": "^2.3.4",
+    "axios": "^0.21.1",
+    "formik": "^2.2.6",
+    "node-sass": "^4.14.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.0"
+    "react-slick": "^0.28.0",
+    "react-transition-group": "^4.4.1",
+    "slick-carousel": "^1.8.1",
+    "web-vitals": "^1.1.0",
+    "yup": "^0.32.9"
   },
   "scripts": {
     "start": "react-scripts start",
