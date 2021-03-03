@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { forwardRef, useContext } from 'react';
 import Title from '../../components/Title';
 
 import './index.scss';
 import NameColumn from './NameColumn';
 import ResumeItem from './ResumeItem';
+import { LanguageContext } from '../../App';
 
-export default function Resume(props) {
+const Resume = forwardRef((props, ref) => {
+    const { language } = useContext(LanguageContext);
+
+    const choiceText = (engText, vieText) => {
+        if (language === 'eng') {
+            return engText;
+        } else {
+            return vieText;
+        }
+    };
+
     return (
-        <section id='resume'>
+        <section id='resume' ref={ref}>
             <div className='resume__container'>
-                <Title sup='My Journey'>Resume</Title>
+                <Title sup={choiceText('My journey', 'Hành trình của tôi')}>
+                    {choiceText('Resume', 'Lý Lịch')}
+                </Title>
                 <div className='resume__content'>
                     <div className='resume__left'>
                         <div
@@ -20,53 +33,126 @@ export default function Resume(props) {
                             data-aos-easing='ease'
                             data-aos-once='true'
                         ></div>
-                        <NameColumn>My Education</NameColumn>
+                        <NameColumn>
+                            {choiceText('My Education', 'Học Vấn')}
+                        </NameColumn>
                         <ResumeItem
                             timeline='2014 - 2018'
-                            title='Vietnam National University of Forestry'
+                            title={choiceText(
+                                'Vietnam National University of Forestry',
+                                'Đại học Lâm nghiệp Việt Nam',
+                            )}
                         >
                             <span>
-                                <b>Bachelor of Forest Resources Management.</b>
-                            </span>
-                            <span>Grade: Good.</span>
-                            <span>GPA: 2.99/4.</span>
-                        </ResumeItem>
-                        <ResumeItem
-                            timeline='2020 - Present'
-                            title='CyberSoft - Programmer Training Center'
-                        >
-                            <span>
-                                <b>Basic Programming course: </b>
-                                Thinking programming, Java language, algorithms,
-                                OOP.
+                                <b>
+                                    {choiceText(
+                                        'Bachelor of Forest Resources Management.',
+                                        'Cử nhân Quản lý tài nguyên rừng',
+                                    )}
+                                </b>
                             </span>
                             <span>
-                                <b>Front-end Foundation course: </b>
-                                Front-end orientation, HTML5, CSS3, Bootstrap 4,
-                                SASS/SCSS, Javascript &#40;ES5/ES6&#41;, AJAX,
-                                JQuery, Git.
+                                {choiceText('Grade: Good.', 'Loại: Khá')}
+                            </span>
+                            <span>
+                                {choiceText('GPA: ', 'Điểm trung bình: ')}
+                                2.99/4.
                             </span>
                         </ResumeItem>
                         <ResumeItem
-                            timeline='2020 - Present'
-                            title='Udemy - Learn Anything, On Your Schedule'
+                            timeline={choiceText(
+                                '2020 - Present',
+                                '2020 - Hiện tại',
+                            )}
+                            title={choiceText(
+                                'CyberSoft - Programmer Training Center',
+                                'CyberSoft - Đào Tạo Chuyên Gia Lập Trình',
+                            )}
                         >
                             <span>
-                                <b>Reactjs course: </b>
-                                Created by Maximilian Schwarzmüller. Learn
-                                Reactjs, Hooks, Redux, React Routing,
-                                Animations.
+                                <b>
+                                    {choiceText(
+                                        'Basic Programming course: ',
+                                        'Khóa Tư duy lập trình: ',
+                                    )}
+                                </b>
+
+                                {choiceText(
+                                    'Thinking programming, Java language, algorithms, OOP.',
+                                    'Nghĩ về lập trình, ngôn ngữ Java, giải thuật, lập trình hướng đối tượng.',
+                                )}
                             </span>
                             <span>
-                                <b>Typescript course: </b>
-                                Created by Stephen Grider. Basic Typescript,
-                                integrate Typescript into React/Redux or Express
-                                projects.
+                                <b>
+                                    {choiceText(
+                                        'Front-end Foundation course: ',
+                                        'Khóa Nền tảng Front-end: ',
+                                    )}
+                                </b>
+
+                                {choiceText(
+                                    `Front-end orientation, HTML5, CSS3, Bootstrap 4,
+                                    SASS/SCSS, Javascript (ES5/ES6), AJAX,
+                                    JQuery, Git.`,
+                                    `Định hướng Front-end, HTML5, CSS3, Bootstrap 4,
+                                    SASS/SCSS, Javascript (ES5/ES6), AJAX,
+                                    JQuery, Git.`,
+                                )}
+                            </span>
+                        </ResumeItem>
+                        <ResumeItem
+                            timeline={choiceText(
+                                '2020 - Present',
+                                '2020 - Hiện tại',
+                            )}
+                            title={choiceText(
+                                'Udemy - Learn Anything, On Your Schedule',
+                                'Udemy - Học Mọi Thứ, Theo Cách Của Bạn',
+                            )}
+                        >
+                            <span>
+                                <b>
+                                    {choiceText(
+                                        'Reactjs course: ',
+                                        'Khóa Reactjs:',
+                                    )}
+                                </b>
+                                {choiceText(
+                                    `Created by Maximilian Schwarzmüller. Learn
+                                    Reactjs, Hooks, Redux, React Routing,
+                                    Animations.`,
+                                    `Được tạo bởi Maximilian Schwarzmüller. Học Reactjs, 
+                                    Hooks, Redux, React Routing, Animations.`,
+                                )}
                             </span>
                             <span>
-                                <b>Nodejs course: </b>
-                                Created by Andrew Mead, Rob Percival. Learn
-                                Nodejs, Express, MongoDB, Jest.
+                                <b>
+                                    {choiceText(
+                                        'Typescript course: ',
+                                        'Khóa Typescript: ',
+                                    )}
+                                </b>
+                                {choiceText(
+                                    `Created by Stephen Grider. Basic Typescript,
+                                    integrate Typescript into React/Redux or Expressjs
+                                    projects.`,
+                                    `Được tạo bởi Stephen Grider. Typescript cơ bản,
+                                    tích hợp Typescript trong React/Redux hoặc các dự án Expressjs.`,
+                                )}
+                            </span>
+                            <span>
+                                <b>
+                                    {choiceText(
+                                        'Nodejs course: ',
+                                        'Khóa Nodejs: ',
+                                    )}
+                                </b>
+                                {choiceText(
+                                    `Created by Andrew Mead, Rob Percival. Learn
+                                    Nodejs, Expressjs, MongoDB, Jest.`,
+                                    `Được tạo bởi Andrew Mead, Rob Percival.
+                                    Học Nodejs, Expressjs, MongoDB, Mongoose, Jest.`,
+                                )}
                             </span>
                         </ResumeItem>
                     </div>
@@ -79,28 +165,61 @@ export default function Resume(props) {
                             data-aos-easing='ease'
                             data-aos-once='true'
                         ></div>
-                        <NameColumn>My Experience</NameColumn>
+                        <NameColumn>
+                            {choiceText('My Experience', 'Kinh Nghiệm')}
+                        </NameColumn>
                         <ResumeItem
                             timeline='2018 - 2020'
-                            title='Freelance Business'
+                            title={choiceText(
+                                'Freelance Business',
+                                'Kinh Doanh Tự Do',
+                            )}
                         >
-                            <span>Sale staff of Vinmart.</span>
-                            <span>Selling online on facebook platform.</span>
+                            <span>
+                                {choiceText(
+                                    'Sale staff of Vinmart.',
+                                    'Nhân viên bán hàng tại Vinmart.',
+                                )}
+                            </span>
+                            <span>
+                                {choiceText(
+                                    'Selling online on facebook platform.',
+                                    'Kinh doanh trực tuyến trên nền tảng facebook.',
+                                )}
+                            </span>
                         </ResumeItem>
                         <ResumeItem
-                            timeline='2020 - Present'
-                            title='Personal Web Project'
+                            timeline={choiceText(
+                                '2020 - Present',
+                                '2020 - Hiện tại',
+                            )}
+                            title={choiceText(
+                                'Personal Web Project',
+                                'Dự Án Web Cá Nhân',
+                            )}
                         >
                             <span>
-                                Learning and practicing with many web projects.
+                                {choiceText(
+                                    'Learning and practicing with many web projects.',
+                                    'Học và thực hành với nhiều dự án web.',
+                                )}
                             </span>
                             <span>
-                                Build e-commerce, task manager, cv portfolio web
-                                projects.
+                                {choiceText(
+                                    'Build e-commerce, task manager, CV portfolio web projects.',
+                                    'Xây dựng các web về thương mại điện tử, quản lý công việc, CV.',
+                                )}
                             </span>
                         </ResumeItem>
-                        <NameColumn>My Skill</NameColumn>
-                        <ResumeItem title='Knowledge Basic'>
+                        <NameColumn>
+                            {choiceText('My Skill', 'Kỹ Năng')}
+                        </NameColumn>
+                        <ResumeItem
+                            title={choiceText(
+                                'Knowledge Basic',
+                                'Hiểu Biết Cơ Bản',
+                            )}
+                        >
                             <span>
                                 <b>HTML/CSS: </b>HTML5, CSS3, Bootstrap 4, SASS.
                             </span>
@@ -120,18 +239,40 @@ export default function Resume(props) {
                                 Mongoose.
                             </span>
                             <span>
-                                <b>Other Libraries: </b>Material UI, Formik,
-                                Yup, Multer,...
+                                <b>
+                                    {choiceText(
+                                        'Other Libraries: ',
+                                        'Các thư viện khác: ',
+                                    )}
+                                </b>
+                                Material UI, Formik, Yup,...
                             </span>
                             <span>
                                 <b>Git: </b>Git basic, Github.
                             </span>
                             <span>
-                                <b>Programming Basic: </b>Comment, OOP, Data
-                                structure and Algorithms.
+                                <b>
+                                    {choiceText(
+                                        'Programming Basic: ',
+                                        'Lập trình cơ bản: ',
+                                    )}
+                                </b>
+                                {choiceText(
+                                    'Comment, OOP, Data structure and Algorithms.',
+                                    'Bình luận, hướng đối tượng, cấu trúc dữ liệu và giải thuật.',
+                                )}
                             </span>
                             <span>
-                                <b>Soft skills: </b>Self study, Teamwork.
+                                <b>
+                                    {choiceText(
+                                        'Soft skills: ',
+                                        'Các kỹ năng mềm: ',
+                                    )}
+                                </b>
+                                {choiceText(
+                                    'Self study, teamwork.',
+                                    'Tự học, làm việc nhóm',
+                                )}
                             </span>
                         </ResumeItem>
                     </div>
@@ -139,4 +280,6 @@ export default function Resume(props) {
             </div>
         </section>
     );
-}
+});
+
+export default Resume;

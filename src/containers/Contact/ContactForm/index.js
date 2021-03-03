@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
@@ -7,6 +7,7 @@ import './index.scss';
 import Button from '../../../components/Button';
 import Input from '../../../components/Input';
 import Loader from '../../../components/Loader';
+import { LanguageContext } from '../../../App';
 
 const validationSchema = yup.object({
     name: yup.string().required('Your name is required.'),
@@ -20,10 +21,20 @@ const validationSchema = yup.object({
 });
 
 const URL =
-    'https://letuanvn247-poftfolio-default-rtdb.firebaseio.com/contacts.json';
+    'https://letuanvn247-portfolio-default-rtdb.firebaseio.com/contacts.json';
 
 export default function ContactForm() {
     const [loading, setLoading] = useState(false);
+
+    const { language } = useContext(LanguageContext);
+
+    const choiceText = (engText, vieText) => {
+        if (language === 'eng') {
+            return engText;
+        } else {
+            return vieText;
+        }
+    };
 
     const handleSendContact = (values) => {
         setLoading(true);
@@ -63,13 +74,13 @@ export default function ContactForm() {
                 data-aos-easing='ease-in-out'
                 data-aos-once='true'
             >
-                <h2>Contact Form</h2>
+                <h2>{choiceText('Contact Form', 'Mẫu Liên Lạc')}</h2>
                 <form onSubmit={formik.handleSubmit}>
                     <div className='contactForm__item'>
                         <Input
                             fullWidth
                             type='text'
-                            placeholder='Your name'
+                            placeholder={choiceText('Your name', 'Tên của bạn')}
                             name='name'
                             id='name'
                             value={formik.values.name}
@@ -90,7 +101,10 @@ export default function ContactForm() {
                             type='email'
                             name='email'
                             id='email'
-                            placeholder='Your email'
+                            placeholder={choiceText(
+                                'Your email',
+                                'Email của bạn',
+                            )}
                             value={formik.values.email}
                             isError={
                                 formik.touched.email &&
@@ -109,7 +123,10 @@ export default function ContactForm() {
                             type='text'
                             name='phone'
                             id='phone'
-                            placeholder='Phone number'
+                            placeholder={choiceText(
+                                'Phone number',
+                                'Số điện thoại của bạn',
+                            )}
                             value={formik.values.phone}
                             isError={
                                 formik.touched.phone &&
@@ -128,7 +145,10 @@ export default function ContactForm() {
                             type='text'
                             name='subject'
                             id='subject'
-                            placeholder='Write a subject'
+                            placeholder={choiceText(
+                                'Write a subject',
+                                'Tiêu đề',
+                            )}
                             value={formik.values.subject}
                             isError={
                                 formik.touched.subject &&
@@ -149,7 +169,10 @@ export default function ContactForm() {
                             id='message'
                             cols='30'
                             rows='10'
-                            placeholder='Your message'
+                            placeholder={choiceText(
+                                'Your message',
+                                'Tin nhắn của bạn',
+                            )}
                             value={formik.values.message}
                             isError={
                                 formik.touched.message &&
@@ -169,7 +192,7 @@ export default function ContactForm() {
                             color='secondary'
                             light
                         >
-                            SUBMIT
+                            {choiceText('SUBMIT', 'GỬI')}
                         </Button>
                     </div>
                 </form>

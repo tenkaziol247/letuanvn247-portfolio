@@ -21,3 +21,40 @@
         }
     }
 }
+
+@include md {
+    #contact {
+        @include general-background-md;
+        .contact__content {
+            display: flex;
+            justify-content: space-between;
+            .contact__left {
+                flex: 4;
+            }
+            .contact__right {
+                flex: 8;
+            }
+        }
+    }
+}
+
+@include sm {
+    #contact {
+        .contact__content {
+            flex-direction: column-reverse;
+            .contact__left {
+                flex: 1;
+            }
+            .contact__right {
+                flex: 1;
+                margin-bottom: 40px;
+            }
+        }
+    }
+}
+
+@include xs {
+    #contact {
+        @include general-background-xs;
+    }
+}

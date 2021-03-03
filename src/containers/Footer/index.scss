@@ -1,0 +1,27 @@
+@import "../../utilitiesStyles/variables";
+@import "../../utilitiesStyles/mixin";
+
+#footer {
+    width: 100%;
+    padding: 20px 100px;
+    position: relative;
+    background-color: $color-black-2;
+    display: flex;
+    align-items: center;
+    .footer__container {
+        max-width: $w;
+        width: 100%;
+        margin: 0 auto;
+        p {
+            display: block;
+            width: 100%;
+            font-size: 0.9rem;
+        }
+    }
+}
+
+@include md {
+    #footer {
+        padding: 20px 24px;
+    }
+}

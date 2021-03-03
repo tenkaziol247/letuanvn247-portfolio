@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 
 import './index.scss';
+import { ScrollContext } from '../../../../App';
+import Tooltip from '../../../../components/Tooltip';
 
-export default function NavigationItem({ active, children, to = '#' }) {
+export default function NavigationItem({ active, children, to, value }) {
+    const { handleScrollToSection } = useContext(ScrollContext);
+    const [showTooltip, setShowTooltip] = useState(false);
+
     return (
         <li>
             <div
@@ -12,15 +17,20 @@ export default function NavigationItem({ active, children, to = '#' }) {
                 ].join(' ')}
             >
                 <div className='navigationItem__circuit'></div>
-                <a
+                <span
                     className={[
                         'navigationItem__link',
                         active ? 'light--large' : '',
                     ].join(' ')}
-                    href={to}
+                    onClick={() => handleScrollToSection(to)}
+                    onMouseEnter={() => setShowTooltip(true)}
+                    onMouseLeave={() => setShowTooltip(false)}
                 >
                     {children}
-                </a>
+                    <Tooltip show={showTooltip} responsive={active}>
+                        {value}
+                    </Tooltip>
+                </span>
             </div>
         </li>
     );

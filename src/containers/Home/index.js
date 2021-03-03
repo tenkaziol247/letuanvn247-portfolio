@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, forwardRef } from 'react';
 
 import Button from '../../components/Button';
 import HomeContent from './HomeContent';
@@ -6,11 +6,11 @@ import HomeHero from './HomeHero';
 import { LanguageContext } from '../../App';
 import './index.scss';
 
-export default function Home(props) {
+const Home = forwardRef((props, ref) => {
     const { language, handleLanguage } = useContext(LanguageContext);
 
     return (
-        <section id='home'>
+        <section id='home' ref={ref}>
             <div className='home__container'>
                 <div className='home__left'>
                     <HomeHero />
@@ -48,4 +48,6 @@ export default function Home(props) {
             </div>
         </section>
     );
-}
+});
+
+export default Home;

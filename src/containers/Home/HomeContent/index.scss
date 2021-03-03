@@ -36,3 +36,33 @@
         }
     }
 }
+
+@include md {
+    .home__content {
+        border-radius: 12px;
+        padding: 36px 100px;
+        background-color: $color-opacity-black-3;
+        box-shadow: 0px 0px 5px 3px $color-opacity-white-3;
+    }
+}
+
+@include sm {
+    .home__content {
+        padding: 36px 40px;
+    }
+}
+
+@include xs {
+    .home__content {
+        padding: 20px;
+    }
+}
+
+@include custom-responsive(400) {
+    .home__content {
+        padding: 12px;
+        .home__title {
+            height: 150px;
+        }
+    }
+}

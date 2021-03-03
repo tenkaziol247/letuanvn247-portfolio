@@ -34,3 +34,48 @@
         }
     }
 }
+
+@include md {
+    #resume {
+        @include general-background-md;
+        .resume__container {
+            .resume__content {
+                display: flex;
+
+                .resume__left {
+                    flex: 1;
+                    position: relative;
+                    margin-right: 10px;
+                }
+                .resume__right {
+                    flex: 1;
+                    position: relative;
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+}
+
+@include sm {
+    #resume {
+        .resume__container {
+            .resume__content {
+                flex-direction: column;
+
+                .resume__left {
+                    margin-right: 0;
+                }
+                .resume__right {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+}
+
+@include xs {
+    #resume {
+        @include general-background-xs;
+    }
+}

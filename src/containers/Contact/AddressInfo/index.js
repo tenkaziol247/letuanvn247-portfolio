@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import './index.scss';
 import SocialNetworking from '../../../components/SocialNetworking';
+import { LanguageContext } from '../../../App';
 
 export default function AddressInfo(props) {
+    const { language } = useContext(LanguageContext);
+
+    const choiceText = (engText, vieText) => {
+        if (language === 'eng') {
+            return engText;
+        } else {
+            return vieText;
+        }
+    };
+
     return (
         <div className='addressInfo'>
             <h2
@@ -13,7 +24,7 @@ export default function AddressInfo(props) {
                 data-aos-easing='ease-in-out'
                 data-aos-once='true'
             >
-                My Address Info
+                {choiceText('My Address Info', 'Thông Tin Địa Chỉ')}
             </h2>
             <div className='addressInfo__box'>
                 <div
@@ -30,9 +41,14 @@ export default function AddressInfo(props) {
                         </span>
                     </div>
                     <div>
-                        <p className='addressInfo__item__header'>Location</p>
+                        <p className='addressInfo__item__header'>
+                            {choiceText('Location', 'Địa chỉ')}
+                        </p>
                         <p className='addressInfo__item__text'>
-                            Thanh Xuan, Ha Noi
+                            {choiceText(
+                                'Nga Tu So, Dong Da, Ha Noi',
+                                'Ngã Tư Sở, Đống Đa, Hà Nội',
+                            )}
                         </p>
                     </div>
                 </div>
@@ -51,7 +67,7 @@ export default function AddressInfo(props) {
                     </div>
                     <div>
                         <p className='addressInfo__item__header'>
-                            Phone Number
+                            {choiceText('Phone number', 'Số điện thoại')}
                         </p>
                         <p className='addressInfo__item__text'>039 420 9029</p>
                     </div>
@@ -71,7 +87,7 @@ export default function AddressInfo(props) {
                     </div>
                     <div>
                         <p className='addressInfo__item__header'>
-                            Email Address
+                            {choiceText('Email address', 'Hòm thư điện tử')}
                         </p>
                         <p className='addressInfo__item__text'>
                             letuanvn247@gmail.com

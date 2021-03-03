@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { forwardRef, useContext } from 'react';
 
 import Title from '../../components/Title';
 import Button from '../../components/Button';
 import './index.scss';
 import SocialNetworking from '../../components/SocialNetworking';
+import { LanguageContext } from '../../App';
 
-export default function AboutMe(props) {
+const AboutMe = forwardRef((props, ref) => {
+    const { language } = useContext(LanguageContext);
+
+    const choiceText = (engText, vieText) => {
+        if (language === 'eng') {
+            return engText;
+        } else {
+            return vieText;
+        }
+    };
+
     const renderInfoItem = (title, info) => {
         return (
             <tr>
@@ -18,7 +29,7 @@ export default function AboutMe(props) {
     };
 
     return (
-        <section id='aboutMe'>
+        <section id='aboutMe' ref={ref}>
             <div
                 className='aboutMe__container'
                 data-aos='fade-up'
@@ -27,7 +38,9 @@ export default function AboutMe(props) {
                 data-aos-easing='ease-in-out'
                 data-aos-once='true'
             >
-                <Title sup='My Profile'>About Me</Title>
+                <Title sup={choiceText('My profile', 'Hồ sơ của tôi')}>
+                    {choiceText('About Me', 'Thông Tin')}
+                </Title>
                 <div className='aboutMe__content'>
                     <div className='aboutMe__left'>
                         <div
@@ -49,30 +62,46 @@ export default function AboutMe(props) {
                     >
                         <table className='aboutMe_info'>
                             <tbody>
-                                {renderInfoItem('Name:', 'Le Anh Tuan')}
                                 {renderInfoItem(
-                                    'Address:',
-                                    'Thanh Xuan, Ha Noi',
+                                    choiceText('Name:', 'Họ tên:'),
+                                    choiceText('Le Anh Tuan', 'Lê Anh Tuấn'),
                                 )}
-                                {renderInfoItem('Nationality:', 'Vietnamese')}
-                                {renderInfoItem('Phone:', '039 420 9029')}
                                 {renderInfoItem(
-                                    'Email:',
+                                    choiceText('Address:', 'Địa chỉ:'),
+                                    choiceText(
+                                        'Nga Tu So, Dong Da, Ha Noi',
+                                        'Ngã Tư Sở, Đống Đa, Hà Nội',
+                                    ),
+                                )}
+                                {renderInfoItem(
+                                    choiceText('Nationality:', 'Quốc tịch:'),
+                                    choiceText('Vietnamese', 'Việt Nam'),
+                                )}
+                                {renderInfoItem(
+                                    choiceText(
+                                        'Phone number:',
+                                        'Số điện thoại:',
+                                    ),
+                                    '039 420 9029',
+                                )}
+                                {renderInfoItem(
+                                    choiceText('Email:', 'Thư điện tử:'),
                                     'letuanvn247@gmail.com',
                                 )}
                             </tbody>
                         </table>
                         <SocialNetworking />
-                        <div>
+                        <div className='aboutMe__download'>
                             <Button
                                 component='a'
-                                link='#'
+                                link='./assets/files/cv-letuanvn247.pdf'
+                                download='LeAnhTuan_CV'
                                 variant='outlined'
                                 color='primary'
                                 size='large'
                                 light
                             >
-                                DOWNLOAD MY CV
+                                {choiceText('DOWNLOAD MY CV', 'TẢI CV CỦA TÔI')}
                                 <span>
                                     <i className='fa fa-file-download'></i>
                                 </span>
@@ -83,4 +112,6 @@ export default function AboutMe(props) {
             </div>
         </section>
     );
-}
+});
+
+export default AboutMe;

@@ -4,6 +4,7 @@
 #portfolio {
     @include general-background;
     background-color: $color-black-2;
+    padding-bottom: 80px;
     .portfolio__container {
         max-width: $w;
         margin: 0 auto;
@@ -47,6 +48,53 @@
                     font-size: 2rem;
                     color: $color-primary-0;
                 }
+            }
+        }
+    }
+}
+
+@include md {
+    #portfolio {
+        @include general-background-md;
+        padding-bottom: 80px;
+        .portfolio__container {
+            padding: 0;
+            .portfolio__content {
+                height: 500px;
+
+                .slider {
+                    .slick-prev {
+                        left: -15px;
+                        z-index: 10;
+                    }
+
+                    .slick-next {
+                        right: -15px;
+                        z-index: 10;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include sm {
+    #portfolio {
+        .portfolio__container {
+            .portfolio__content {
+                height: 400px;
+            }
+        }
+    }
+}
+
+@include xs {
+    #portfolio {
+        @include general-background-xs;
+        padding-bottom: 80px;
+        .portfolio__container {
+            .portfolio__content {
+                height: 300px;
             }
         }
     }

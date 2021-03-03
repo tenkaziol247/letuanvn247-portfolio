@@ -14,6 +14,7 @@ export default function Button({
     disabled = false,
     fullWidth = false,
     light = false,
+    ...rest
 }) {
     const renderButton = () => {
         const classes = ['button'];
@@ -56,7 +57,7 @@ export default function Button({
 
         if (component === 'a') {
             return (
-                <a className={classes.join(' ')} href={link}>
+                <a className={classes.join(' ')} href={link} {...rest}>
                     {children}
                 </a>
             );
@@ -67,6 +68,7 @@ export default function Button({
                     onClick={handleClick}
                     type={type}
                     disabled={disabled}
+                    {...rest}
                 >
                     {children}
                 </button>

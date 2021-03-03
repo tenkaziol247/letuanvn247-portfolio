@@ -2,14 +2,29 @@
 
 @mixin general-background {
     width: 100%;
-    padding: 60px 100px;
+    padding: 80px 100px;
     position: relative;
 }
 
-//general width
 @mixin general-frame-width {
     max-width: $w;
     margin: 0 auto;
+    padding: 80px 0;
+}
+
+@mixin general-background-md {
+    padding: 80px 24px;
+}
+
+@mixin general-frame-width-md {
+    padding: 80px 0;
+}
+
+@mixin general-background-xs {
+    padding: 60px 16px;
+}
+
+@mixin general-frame-width-xs {
     padding: 60px 0;
 }
 
@@ -109,9 +124,9 @@
         width: 24px;
     }
     80% {
-        width: 400px;
+        width: 300px;
     }
     100% {
-        width: 360px;
+        width: 280px;
     }
 }

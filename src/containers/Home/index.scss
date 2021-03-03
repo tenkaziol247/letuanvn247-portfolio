@@ -45,7 +45,7 @@
             top: 12px;
             right: 10%;
             & > span {
-                background-color: $color-gray-0;
+                background-color: $color-gray-3;
                 display: block;
                 height: 3px;
                 margin-bottom: 12px;
@@ -85,7 +85,7 @@
                     width: 10px;
                     height: 10px;
                     border-radius: 50%;
-                    background-color: $color-gray-0;
+                    background-color: $color-gray-3;
                 }
 
                 &::after {
@@ -96,9 +96,44 @@
                     transform: translate(101%, 18%) rotate(231deg);
                     width: 3px;
                     height: 129px;
-                    background-color: $color-gray-0;
+                    background-color: $color-gray-3;
                 }
             }
+        }
+    }
+}
+
+@include md {
+    #home {
+        .home__container {
+            min-height: 100vh;
+            justify-content: center;
+            padding: 0 24px;
+            .home__left {
+                display: none;
+            }
+            .home__right {
+                flex: 1;
+            }
+        }
+    }
+}
+
+@include xs {
+    #home {
+        .home__container {
+            .home__decor {
+                display: none;
+            }
+        }
+    }
+}
+
+@include custom-responsive(400) {
+    #home {
+        .home__container {
+            min-height: 100vh;
+            padding: 0 16px;
         }
     }
 }

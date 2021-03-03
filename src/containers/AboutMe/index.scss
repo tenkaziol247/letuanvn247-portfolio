@@ -21,16 +21,27 @@
                 box-sizing: border-box;
 
                 .aboutMe__avatar {
-                    background-image: url("../../assets/images/avatar-me.png");
-                    background-color: $color-black-0;
+                    background-image: url("../../assets/images/avatar-me-1.jpg");
                     background-position: top;
                     background-size: cover;
                     background-repeat: no-repeat;
                     height: 400px;
                     width: 400px;
                     margin: 0 auto;
-                    border: 1px solid $color-black-0;
+                    border: 2px solid $color-primary-0;
                     border-radius: 8px;
+                    position: relative;
+
+                    &::after {
+                        content: "";
+                        display: block;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background-color: $color-opacity-black-1;
+                    }
                 }
             }
 
@@ -59,27 +70,80 @@
                     }
                 }
 
-                .aboutMe__social {
-                    margin-bottom: 20px;
-                    list-style: none;
+                .aboutMe__download {
+                    margin-top: 24px;
+                }
+            }
+        }
+    }
+}
 
-                    .aboutMe__social__item {
-                        display: inline-block;
+@include md {
+    #aboutMe {
+        @include general-background-md;
 
-                        a {
-                            display: inline-block;
-                            margin-right: 24px;
-                            text-align: center;
-                            height: 32px;
-                            width: 32px;
-                            line-height: 32px;
-                            background-color: $color-gray-1;
-                            border-radius: 50%;
-                            transition: all 0.3s ease-out;
-                            color: $color-white-0;
-                            &:hover {
-                                background-color: $color-secondary-0;
-                            }
+        .aboutMe__container {
+            @include general-frame-width-md;
+
+            .aboutMe__content {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                .aboutMe__left {
+                    flex: 1;
+                    margin-bottom: 60px;
+
+                    .aboutMe__avatar {
+                        border: 2px solid $color-primary-0;
+                    }
+                }
+
+                .aboutMe__right {
+                    flex: 1;
+
+                    .aboutMe_info {
+                        border: 2px solid $color-primary-0;
+                        border-radius: 8px;
+                        padding: 36px 0 0px 18px;
+                        margin-bottom: 24px;
+                        background-color: $color-black-0;
+                    }
+
+                    .aboutMe__download {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include xs {
+    #aboutMe {
+        @include general-background-xs;
+        .aboutMe__container {
+            @include general-frame-width-xs;
+            .aboutMe__content {
+                .aboutMe__left {
+                    .aboutMe__avatar {
+                        width: 280px;
+                        height: 280px;
+                    }
+                }
+                .aboutMe__right {
+                    .aboutMe_info {
+                        border: 2px solid $color-primary-0;
+                        border-radius: 8px;
+                        padding: 24px 0 0px 18px;
+                        margin-bottom: 36px;
+                        background-color: $color-black-0;
+                    }
+
+                    .aboutMe_info {
+                        td {
+                            padding-bottom: 24px;
+                            padding-right: 24px;
                         }
                     }
                 }
