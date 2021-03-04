@@ -2,16 +2,26 @@ import React, { useContext } from 'react';
 
 import './index.scss';
 import NavigationItem from './NavigationItem';
-import { ScrollContext } from '../../../App';
+import { ScrollContext, LanguageContext } from '../../../App';
 
 export default function NavigationBar() {
     const { sectionActive } = useContext(ScrollContext);
+
+    const { language } = useContext(LanguageContext);
+
+    const choiceText = (engText, vieText) => {
+        if (language === 'eng') {
+            return engText;
+        } else {
+            return vieText;
+        }
+    };
 
     return (
         <nav>
             <ul className='narvigationBar'>
                 <NavigationItem
-                    value='Home'
+                    value={choiceText('Home', 'Trang Chủ')}
                     to='home'
                     active={sectionActive === 'home'}
                 >
@@ -20,7 +30,7 @@ export default function NavigationBar() {
                     </span>
                 </NavigationItem>
                 <NavigationItem
-                    value='About Me'
+                    value={choiceText('About Me', 'Thông Tin')}
                     to='aboutMe'
                     active={sectionActive === 'aboutMe'}
                 >
@@ -29,7 +39,7 @@ export default function NavigationBar() {
                     </span>
                 </NavigationItem>
                 <NavigationItem
-                    value='Resume'
+                    value={choiceText('Resume', 'Lý Lịch')}
                     to='resume'
                     active={sectionActive === 'resume'}
                 >
@@ -38,7 +48,7 @@ export default function NavigationBar() {
                     </span>
                 </NavigationItem>
                 <NavigationItem
-                    value='Portfolio'
+                    value={choiceText('Portfolio', 'Danh Mục')}
                     to='portfolio'
                     active={sectionActive === 'portfolio'}
                 >
@@ -47,7 +57,7 @@ export default function NavigationBar() {
                     </span>
                 </NavigationItem>
                 <NavigationItem
-                    value='Contact'
+                    value={choiceText('Contact', 'Liên Hệ')}
                     to='contact'
                     active={sectionActive === 'contact'}
                 >
